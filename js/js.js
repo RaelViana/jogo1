@@ -10,6 +10,8 @@
     //Principais variáveis do jogo
 	
     var jogo = {}
+    var velocidade=5;
+    var posicaoY = parseInt(Math.random() * 334);
     var TECLA = { /*criando um array de teclas*/
         W: 87,  /*movimenta o helicoptero para cima*/
         S: 83,   /*movimenta o helicoptero para baixo*/
@@ -37,6 +39,7 @@
 	
     movefundo();
     movejogador();
+    moveinimigo1();
 	
     } // Fim da função loop()
     
@@ -81,6 +84,20 @@
 		//Chama função Disparo	
 	}
 
-	} // fim da função movejogador()
+    } // fim da função movejogador()
+    
+    function moveinimigo1() {
+
+        posicaoX = parseInt($("#inimigo1").css("left"));
+        $("#inimigo1").css("left",posicaoX-velocidade);
+        $("#inimigo1").css("top",posicaoY);
+            
+            if (posicaoX<=0) {
+            posicaoY = parseInt(Math.random() * 334);
+            $("#inimigo1").css("left",694);
+            $("#inimigo1").css("top",posicaoY);
+                
+            }
+    } //Fim da função moveinimigo1()
 
     } // Fim da função start
